@@ -10,6 +10,6 @@ Please contribute, file issues, and make PRs. More than anything I'm sure there 
 
 MIT
 
-##Workshop Links:
-http://btholt.github.io/complete-intro-to-react/
-https://btholt.github.io/complete-intro-to-react/all.html
+## Workshop Links:
+* http://btholt.github.io/complete-intro-to-react/
+* https://btholt.github.io/complete-intro-to-react/all.html
