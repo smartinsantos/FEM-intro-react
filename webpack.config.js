@@ -21,6 +21,13 @@ module.exports = {
     // rules on how to transpile the code
     rules: [
       {
+        // before the build proccess happens
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
         // test if the file is .js, if it is the use the babel-loader to transpile
         test: /\.js$/,
         loader: 'babel-loader'
