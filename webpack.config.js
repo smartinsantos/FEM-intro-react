@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'eval', // how webpack will transpile the bundle
   output: {
     path: path.join(__dirname, '/public'), // where the bundle will go
-    filename: 'bundle.js', // the name of the bundle file
+    filename: 'bundle.js' // the name of the bundle file
   },
   resolve: {
     extensions: ['.js', '.json'] // progression to assign extension to the imports (ex import Blah check if js, if not check if json)
@@ -15,7 +15,7 @@ module.exports = {
     // console stat settings
     colors: true,
     reasons: true,
-    chunks: true,
+    chunks: true
   },
   module: {
     // rules on how to transpile the code
