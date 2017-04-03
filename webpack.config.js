@@ -8,6 +8,10 @@ module.exports = {
     path: path.join(__dirname, '/public'), // where the bundle will go
     filename: 'bundle.js' // the name of the bundle file
   },
+  devServer: {
+    // specifies what is the static directory
+    publicPath: './public/'
+  },
   resolve: {
     extensions: ['.js', '.json'] // progression to assign extension to the imports (ex import Blah check if js, if not check if json)
   },
