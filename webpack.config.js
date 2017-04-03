@@ -32,6 +32,7 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
+            // don't inline images
             options: {
               url: false
             }
