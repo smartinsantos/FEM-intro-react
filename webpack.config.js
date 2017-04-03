@@ -24,6 +24,19 @@ module.exports = {
         // test if the file is .js, if it is the use the babel-loader to transpile
         test: /\.js$/,
         loader: 'babel-loader'
+      },
+      {
+        // test for .css, if it passes, run the steps on use
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          }
+        ]
       }
     ]
   }
