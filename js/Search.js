@@ -6,14 +6,15 @@ import _ from 'lodash'
 import ShowCard from './ShowCard'
 
 class Search extends Component {
+  renderCard () {
+    return _.map(data.shows, (show, idx) => {
+      return <ShowCard show={show} key={show.imdbID} />
+    })
+  }
   render () {
     return (
       <div className='search'>
-        {_.map(data.shows, (show, idx) => {
-          return (
-            <ShowCard show={show} key={show.imdbID} />
-          )
-        })}
+        { this.renderCard() }
       </div>
     )
   }
