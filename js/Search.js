@@ -5,7 +5,7 @@ class Search extends Component {
   render () {
     return (
       <div className='search'>
-        <h1> WHAT? </h1>
+        <h1>CACATUA22</h1>
         <pre><code>{JSON.stringify(data, null, null)}</code></pre>
       </div>
     )

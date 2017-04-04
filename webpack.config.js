@@ -10,6 +10,7 @@ module.exports = {
   },
   devServer: {
     // specifies what is the static directory
+    hot: true,
     publicPath: '/public/',
     historyApiFallback: true // re-routes 404 to homepage
   },
