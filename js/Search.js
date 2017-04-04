@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import data from '../public/data.json'
+import _ from 'lodash'
+
+// Components
+import ShowCard from './ShowCard'
 
 class Search extends Component {
   render () {
     return (
       <div className='search'>
-        <h1>CACATUA22</h1>
-        <pre><code>{JSON.stringify(data, null, null)}</code></pre>
+        {_.map(data.shows, (show, idx) => {
+          return (
+            <ShowCard show={show} key={show.imdbID} />
+          )
+        })}
       </div>
     )
   }
