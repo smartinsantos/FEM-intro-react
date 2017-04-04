@@ -5,12 +5,12 @@ module.exports = {
   entry: './js/App.js', // entry point of our ClientApp
   devtool: 'eval', // how webpack will transpile the bundle
   output: {
-    path: path.join(__dirname, '/public'), // where the bundle will go
+    path: path.join(__dirname, '/public/'), // where the bundle will go
     filename: 'bundle.js' // the name of the bundle file
   },
   devServer: {
     // specifies what is the static directory
-    publicPath: './public/',
+    publicPath: '/public/',
     historyApiFallback: true // re-routes 404 to homepage
   },
   resolve: {
