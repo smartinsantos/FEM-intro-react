@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   context: __dirname, // tells webpack wich the root directory is
-  entry: './js/ClientApp.js', // entry point of our ClientApp
+  entry: './js/App.js', // entry point of our ClientApp
   devtool: 'eval', // how webpack will transpile the bundle
   output: {
     path: path.join(__dirname, '/public'), // where the bundle will go
@@ -10,7 +10,8 @@ module.exports = {
   },
   devServer: {
     // specifies what is the static directory
-    publicPath: './public/'
+    publicPath: './public/',
+    historyApiFallback: true // re-routes 404 to homepage
   },
   resolve: {
     extensions: ['.js', '.json'] // progression to assign extension to the imports (ex import Blah check if js, if not check if json)

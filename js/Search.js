@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Search = React.createClass({
+class Search extends Component {
   render () {
     return (
       <h1> Search Page !</h1>
     )
   }
-})
+}
 
 export default Search

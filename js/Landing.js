@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 
-const Landing = React.createClass({
+class Landing extends Component {
   render () {
     return (
       <div className='landing'>
         <h1>rVideo</h1>
         <input type='text' placeholder='Search' />
-        <a>or Browse All</a>
+        <Link to='/search'>or Browse All</Link>
       </div>
     )
   }
-})
+}
 
 export default Landing
