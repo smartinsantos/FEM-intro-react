@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
+// Components
+import Header from './Header'
+
 class Details extends Component {
   render () {
     const { poster, title, year, description, trailer } = this.props.show
     return (
       <div className='details'>
-        <header>
-          <h1>rVideo</h1>
-        </header>
+        <Header />
         <section>
           <h1>{title}</h1>
           <h2>({year})</h2>

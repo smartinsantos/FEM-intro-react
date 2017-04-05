@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 // Components
 import ShowCard from './ShowCard'
+import Header from './Header'
 
 class Search extends Component {
   constructor (props) {
@@ -27,10 +28,11 @@ class Search extends Component {
     const { shows } = this.props
     return (
       <div className='search'>
-        <header>
-          <h1>rVideo</h1>
-          <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={(e) => { this.handleSearchTermChange(e) }} />
-        </header>
+        <Header
+          handleSearchTermChange={(e) => this.handleSearchTermChange(e)}
+          searchTerm={this.state.searchTerm}
+          showSearch
+        />
         <div>
           { this.renderCards(shows) }
         </div>
