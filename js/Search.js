@@ -40,7 +40,10 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  shows: React.PropTypes.array
+  shows: React.PropTypes.arrayOf(React.PropTypes.shape({
+    title: React.PropTypes.string,
+    description: React.PropTypes.string
+  }))
 }
 
 export default Search
