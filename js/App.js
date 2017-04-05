@@ -9,6 +9,10 @@ import '../public/style.css'
 // Components
 import Landing from './Landing'
 import Search from './Search'
+import Details from './Details'
+
+// Data
+import data from '../public/data.json'
 
 class App extends Component {
   render () {
@@ -16,7 +20,11 @@ class App extends Component {
       <BrowserRouter>
         <div className='app'>
           <Match exactly pattern='/' component={Landing} />
-          <Match pattern='/search' component={Search} />
+          <Match
+            pattern='/search'
+            component={(props) => <Search shows={data.shows} {...props} />}
+          />
+          <Match pattern='/details/:id' component={Details} />
         </div>
       </BrowserRouter>
     )
