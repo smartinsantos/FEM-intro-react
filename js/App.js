@@ -24,7 +24,14 @@ class App extends Component {
             pattern='/search'
             component={(props) => <Search shows={data.shows} {...props} />}
           />
-          <Match pattern='/details/:id' component={Details} />
+          <Match
+            pattern='/details/:id'
+            component={(props) => {
+              // filter the one show by its id, if not return null, then return details with the selected show
+              const show = data.shows.filter((show) => props.params.id === show.imdbID)[0] || null
+              return <Details show={show} {...props} />
+            }}
+          />
         </div>
       </BrowserRouter>
     )

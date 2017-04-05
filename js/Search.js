@@ -7,7 +7,6 @@ import ShowCard from './ShowCard'
 class Search extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
     this.state = {
       searchTerm: ''
     }
@@ -15,8 +14,8 @@ class Search extends Component {
   handleSearchTermChange (e) {
     this.setState({ searchTerm: e.target.value })
   }
-  renderCard () {
-    const filteredShows = _.filter(this.props.shows, (show) => {
+  renderCards (shows) {
+    const filteredShows = _.filter(shows, (show) => {
       return `${show.title} ${show.description}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
     })
     const genShowCards = _.map(filteredShows, (show, idx) => {
@@ -25,6 +24,7 @@ class Search extends Component {
     return genShowCards
   }
   render () {
+    const { shows } = this.props
     return (
       <div className='search'>
         <header>
@@ -32,7 +32,7 @@ class Search extends Component {
           <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={(e) => { this.handleSearchTermChange(e) }} />
         </header>
         <div>
-          { this.renderCard() }
+          { this.renderCards(shows) }
         </div>
       </div>
     )
