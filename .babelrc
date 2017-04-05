@@ -3,7 +3,16 @@
     "react",
     // do not take care of es6 modules, let webpack do this (tree-shaking, basically allows webpack to strip code that is not being used)
     // loose only includes the small pollyfills (if you hit edge cases on the code like Array.iterator the build would not work)
-    ["es2015", {"modules": false, "loose": true }],
-    "react-hmre"
-  ]
+    ["es2015", {"modules": false, "loose": true }]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"] 
+    },
+    "dev": {
+      "presets": [
+        "react-hmre"
+      ] 
+    }
+  }
 }
