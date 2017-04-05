@@ -9,20 +9,27 @@ class Search extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      searchTerm: 'this is the default string'
+      searchTerm: ''
     }
   }
+  handleSearchTermChange (e) {
+    this.setState({ searchTerm: e.target.value })
+  }
   renderCard () {
-    return _.map(data.shows, (show, idx) => {
+    const filteredShows = _.filter(data.shows, (show) => {
+      return `${show.title} ${show.description}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+    })
+    const genShowCards = _.map(filteredShows, (show, idx) => {
       return <ShowCard show={show} key={show.imdbID} />
     })
+    return genShowCards
   }
   render () {
     return (
       <div className='search'>
         <header>
           <h1>rVideo</h1>
-          <input type='text' placeholder='Search' value={this.state.searchTerm} />
+          <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={(e) => { this.handleSearchTermChange(e) }} />
         </header>
         <div>
           { this.renderCard() }
