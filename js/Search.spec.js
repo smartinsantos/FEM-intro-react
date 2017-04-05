@@ -1,5 +1,6 @@
 /* global test expect */
 import React from 'react'
+import _ from 'lodash'
 // enzyme
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
@@ -18,4 +19,14 @@ test('Search snapshot test', () => {
 test('Search should render a ShowCard for each show', () => {
   const component = shallow(<Search />)
   expect(component.find(ShowCard).length).toEqual(data.shows.length)
+})
+
+test('Search should render correct amount of shows based on search', () => {
+  const searchWord = 'house'
+  const component = shallow(<Search />)
+  component.find('input').simulate('change', { target: { value: searchWord } })
+  const showCount = _.filter(data.shows, (show) => {
+    return `${show.title} ${show.description}`.toLowerCase().indexOf(searchWord.toLowerCase()) >= 0
+  }).length
+  expect(component.find(ShowCard).length).toEqual(showCount)
 })

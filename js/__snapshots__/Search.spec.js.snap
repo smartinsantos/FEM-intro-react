@@ -12,7 +12,7 @@ exports[`Search snapshot test 1`] = `
       onChange={[Function]}
       placeholder="Search"
       type="text"
-      value=" "
+      value=""
     />
   </header>
   <div>
