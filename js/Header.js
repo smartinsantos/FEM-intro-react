@@ -21,7 +21,7 @@ class Header extends Component {
     )
   }
   render () {
-    const { handleSearchTermChange, showSearch, searchTerm } = this.props
+    const { handleSearchTermChange, searchTerm, showSearch } = this.props
     return (
       showSearch ? this.withShowSearch(handleSearchTermChange, searchTerm) : this.withLinkBack()
     )
@@ -30,8 +30,8 @@ class Header extends Component {
 
 Header.propTypes = {
   handleSearchTermChange: React.PropTypes.func,
-  showSearch: React.PropTypes.bool,
-  searchTerm: React.PropTypes.string
+  searchTerm: React.PropTypes.string,
+  showSearch: React.PropTypes.bool
 }
 
 export default Header
