@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-
 // Components
 import ShowCard from './ShowCard'
 import Header from './Header'
