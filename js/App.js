@@ -8,7 +8,6 @@ import store from './redux/store'
 // CSS
 import '../public/normalize.css'
 import '../public/style.css'
-
 // Components
 import Landing from './Landing'
 import Search from './Search'

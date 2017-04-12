@@ -14,7 +14,7 @@ class Landing extends React.Component {
     return (
       <div className='landing'>
         <h1>rVideo</h1>
-        <input value={searchTerm} type='text' placeholder='Search' />
+        <input onChange={(e) => this.handleSearchTermChange(e)} value={searchTerm} type='text' placeholder='Search' />
         <Link to='/search'>or Browse All</Link>
       </div>
     )
