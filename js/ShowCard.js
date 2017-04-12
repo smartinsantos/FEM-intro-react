@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 
-class ShowCard extends Component {
+class ShowCard extends React.Component {
   render () {
     const { poster, title, year, description, imdbID } = this.props.show
     return (

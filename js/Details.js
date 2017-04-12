@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 // Components
 import Header from './Header'
 
-class Details extends Component {
+class Details extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

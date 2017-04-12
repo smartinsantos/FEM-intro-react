@@ -1,5 +1,5 @@
 // React
-import React, { Component } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Match } from 'react-router'
 // REDUX
@@ -16,7 +16,7 @@ import Details from './Details'
 // Data
 import data from '../public/data.json'
 
-class App extends Component {
+class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
