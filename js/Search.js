@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 // REDUX
-import connect from 'react-redux'
+import { connect } from 'react-redux'
 import { setSearchTerm } from './redux/actionCreators'
 // Components
 import ShowCard from './ShowCard'
@@ -46,7 +46,6 @@ Search.propTypes = {
   searchTerm: React.PropTypes.string,
   dispatch: React.PropTypes.func
 }
-
 
 // this function will passdown searchTerm as a prop to the Landing component
 const mapStateToProps = (state) => {
