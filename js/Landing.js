@@ -9,16 +9,26 @@ class Landing extends React.Component {
   handleSearchTermChange (e) {
     this.props.dispatch(setSearchTerm(e.target.value))
   }
+  handleSearchSubmit (e) {
+    e.preventDefault()
+    this.context.router.transitionTo('/search')
+  }
   render () {
     const { searchTerm } = this.props
     return (
       <div className='landing'>
         <h1>rVideo</h1>
-        <input onChange={(e) => this.handleSearchTermChange(e)} value={searchTerm} type='text' placeholder='Search' />
+        <form onSubmit={(e) => this.handleSearchSubmit(e)}>
+          <input onChange={(e) => this.handleSearchTermChange(e)} value={searchTerm} type='text' placeholder='Search' />
+        </form>
         <Link to='/search'>or Browse All</Link>
       </div>
     )
   }
+}
+
+Landing.contextTypes = {
+  router: React.PropTypes.object
 }
 
 Landing.propTypes = {

@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import _ from 'lodash'
+// REDUX
+import connect from 'react-redux'
 // Components
 import ShowCard from './ShowCard'
 import Header from './Header'
 
-class Search extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      searchTerm: ''
-    }
-  }
-  handleSearchTermChange (e) {
-    this.setState({ searchTerm: e.target.value })
-  }
+class Search extends React.Component {
   renderCards (shows) {
+    const { searchTerm } = this.props
     const filteredShows = _.filter(shows, (show) => {
-      return `${show.title} ${show.description}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+      return `${show.title} ${show.description}`.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0
     })
     const genShowCards = _.map(filteredShows, (show, idx) => {
       return <ShowCard show={show} key={show.imdbID} />
@@ -24,12 +18,12 @@ class Search extends Component {
     return genShowCards
   }
   render () {
-    const { shows } = this.props
+    const { shows, searchTerm } = this.props
     return (
       <div className='search'>
         <Header
           handleSearchTermChange={(e) => this.handleSearchTermChange(e)}
-          searchTerm={this.state.searchTerm}
+          searchTerm={searchTerm}
           showSearch
         />
         <div>
@@ -44,7 +38,17 @@ Search.propTypes = {
   shows: React.PropTypes.arrayOf(React.PropTypes.shape({
     title: React.PropTypes.string,
     description: React.PropTypes.string
-  }))
+  })),
+  searchTerm: React.PropTypes.string
 }
 
-export default Search
+
+// this function will passdown searchTerm as a prop to the Landing component
+const mapStateToProps = (state) => {
+  return {
+    searchTerm: state.searchTerm
+  }
+}
+
+// this is how connect attaches th return value of mapStateToProps to Landing component
+export default connect(mapStateToProps)(Search)
