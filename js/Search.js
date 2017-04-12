@@ -2,11 +2,15 @@ import React from 'react'
 import _ from 'lodash'
 // REDUX
 import connect from 'react-redux'
+import { setSearchTerm } from './redux/actionCreators'
 // Components
 import ShowCard from './ShowCard'
 import Header from './Header'
 
 class Search extends React.Component {
+  handleSearchTermChange (e) {
+    this.props.dispatch(setSearchTerm(e.target.value))
+  }
   renderCards (shows) {
     const { searchTerm } = this.props
     const filteredShows = _.filter(shows, (show) => {
@@ -39,7 +43,8 @@ Search.propTypes = {
     title: React.PropTypes.string,
     description: React.PropTypes.string
   })),
-  searchTerm: React.PropTypes.string
+  searchTerm: React.PropTypes.string,
+  dispatch: React.PropTypes.func
 }
 
 
