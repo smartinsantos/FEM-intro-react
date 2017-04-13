@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
-// REDUX
+// Redux
 import { connect } from 'react-redux'
 import { setSearchTerm } from './redux/actionCreators'
 // Components

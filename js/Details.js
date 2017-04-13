@@ -1,31 +1,22 @@
 import React from 'react'
-import axios from 'axios'
+import _ from 'lodash'
+// Redux
+import { connect } from 'react-redux'
+import { getOMDBDetails } from './redux/actionCreators'
 // Components
 import Header from './Header'
 
 class Details extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      omdbData: {}
+  componentDidMount () {
+    if (!this.props.omdbData.imdbRating) {
+      this.props.dispatch(getOMDBDetails(this.props.show.imdbID))
     }
   }
-  componentDidMount () {
-    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`)
-    .then((res) => {
-      this.setState({ omdbData: res.data })
-    })
-    .catch((err) => {
-      console.error('axios error', err)
-    })
-  }
   render () {
-    const { poster, title, year, description, trailer } = this.props.show
-
-    let rating = this.state.omdbData.imdbRating
-    ? <h3>{this.state.omdbData.imdbRating}</h3>
+    const { poster, title, year, description, trailer, imdbID } = this.props.show
+    var rating = _.has(this.props.omdbData, imdbID)
+    ? <h3>{this.props.omdbData[imdbID].imdbRating}</h3>
     : <img src='/public/img/loading.png' alt='loading indicator' />
-
     return (
       <div className='details'>
         <Header />
@@ -56,7 +47,20 @@ Details.propTypes = {
     description: React.PropTypes.string,
     trailer: React.PropTypes.string,
     imdbID: React.PropTypes.string
-  })
+  }),
+  omdbData: React.PropTypes.shape({
+    imdbID: React.PropTypes.string,
+    imdbRating: React.PropTypes.number
+  }),
+  dispatch: React.PropTypes.func
 }
 
-export default Details
+// this function will passdown searchTerm as a prop to the Landing component
+const mapStateToProps = (state) => {
+  return {
+    omdbData: state.omdbData
+  }
+}
+
+// this is how connect attaches th return value of mapStateToProps to Landing component
+export default connect(mapStateToProps)(Details)

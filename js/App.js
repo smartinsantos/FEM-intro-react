@@ -1,11 +1,10 @@
-// React
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Match } from 'react-router'
-// REDUX
+// Redux
 import { Provider } from 'react-redux'
 import store from './redux/store'
-// CSS
+// Css
 import '../public/normalize.css'
 import '../public/style.css'
 // Components

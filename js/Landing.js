@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-
-// REDUX
+// Redux
 import { connect } from 'react-redux'
 import { setSearchTerm } from './redux/actionCreators'
 
